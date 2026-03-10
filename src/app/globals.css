@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* MeowSwap palette — inspired by the logo:
+       amber cat, deep ocean blue circle, golden stars */
+    --background: 228 32% 6%;
+    --foreground: 45 20% 92%;
+    --card: 225 28% 9%;
+    --card-foreground: 45 20% 92%;
+    --popover: 225 28% 9%;
+    --popover-foreground: 45 20% 92%;
+    --primary: 42 100% 55%;
+    --primary-foreground: 228 32% 6%;
+    --secondary: 220 30% 14%;
+    --secondary-foreground: 45 20% 90%;
+    --muted: 224 25% 13%;
+    --muted-foreground: 220 15% 52%;
+    --accent: 215 50% 18%;
+    --accent-foreground: 45 20% 92%;
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 222 25% 15%;
+    --input: 222 25% 15%;
+    --ring: 42 100% 55%;
+    --radius: 0.875rem;
+    --success: 152 60% 42%;
+    --warning: 38 92% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-image:
+      radial-gradient(ellipse 80% 60% at 50% -20%, hsla(42, 100%, 55%, 0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 0% 100%, hsla(215, 70%, 40%, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse 40% 40% at 100% 50%, hsla(42, 80%, 50%, 0.03) 0%, transparent 50%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+/* Number input spinner hide */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Responsive table wrapper */
+.table-responsive {
+  @apply overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0;
+}
+
+/* --- MeowSwap custom utilities --- */
+
+.meow-glow {
+  text-shadow: 0 0 24px hsla(42, 100%, 55%, 0.5), 0 0 48px hsla(42, 100%, 55%, 0.15);
+}
+
+.meow-card {
+  background: linear-gradient(
+    168deg,
+    hsl(225, 28%, 10%) 0%,
+    hsl(228, 32%, 7%) 100%
+  );
+  border: 1px solid hsla(42, 100%, 55%, 0.08);
+  box-shadow:
+    0 1px 0 0 hsla(42, 100%, 55%, 0.05) inset,
+    0 8px 40px hsla(228, 40%, 3%, 0.6);
+}
+
+.meow-card-hover {
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.meow-card-hover:hover {
+  border-color: hsla(42, 100%, 55%, 0.18);
+  box-shadow:
+    0 1px 0 0 hsla(42, 100%, 55%, 0.08) inset,
+    0 8px 40px hsla(228, 40%, 3%, 0.6),
+    0 0 30px hsla(42, 100%, 55%, 0.04);
+}
+
+.meow-input {
+  background: hsla(224, 25%, 13%, 0.6);
+  border: 1px solid hsla(222, 25%, 20%, 0.6);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.meow-input:focus-within {
+  border-color: hsla(42, 100%, 55%, 0.3);
+  box-shadow: 0 0 0 3px hsla(42, 100%, 55%, 0.06);
+}
+
+.meow-btn {
+  background: linear-gradient(135deg, hsl(42, 100%, 52%) 0%, hsl(38, 95%, 48%) 100%);
+  color: hsl(228, 32%, 8%);
+  font-weight: 700;
+  transition: filter 0.2s, box-shadow 0.2s;
+}
+.meow-btn:hover:not(:disabled) {
+  filter: brightness(1.08);
+  box-shadow: 0 0 24px hsla(42, 100%, 55%, 0.35);
+}
+.meow-btn:disabled {
+  opacity: 0.4;
+  filter: saturate(0.5);
+}
+
+.meow-badge {
+  background: hsla(42, 100%, 55%, 0.12);
+  color: hsl(42, 90%, 60%);
+  border: 1px solid hsla(42, 100%, 55%, 0.2);
+}
+
+.meow-stat {
+  background: linear-gradient(
+    170deg,
+    hsla(225, 28%, 11%, 0.8) 0%,
+    hsla(228, 32%, 8%, 0.8) 100%
+  );
+  border: 1px solid hsla(222, 25%, 18%, 0.5);
+}
+
+.meow-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, hsla(42, 100%, 55%, 0.15) 50%, transparent 100%);
+}
+
+/* Selection */
+::selection {
+  background: hsla(42, 100%, 55%, 0.25);
+  color: hsl(45, 20%, 95%);
+}
